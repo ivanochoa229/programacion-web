@@ -195,3 +195,40 @@ table {
 .div-nav {
     display: flex;
 }
+
+.div-search {
+    display: flex; /* Cambia a flexbox para mejor control de alineación */
+    align-items: center; /* Centra verticalmente los elementos */
+    justify-content: flex-start; /* Alinea los elementos a la izquierda */
+    width: 50%; /* Ajusta el ancho a un tamaño más limpio */
+    padding: 10px; /* Añade un padding para dar más espacio interno */
+    background-color: #f1f1f1; /* Color de fondo suave */
+    border-radius: 10px; /* Esquinas redondeadas para un aspecto más moderno */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra sutil para dar relieve */
+    margin-left: 25px;
+}
+
+.div-search img {
+    width: 25px; /* Tamaño un poco más pequeño */
+    height: 25px;
+    margin-right: 10px; /* Espacio entre el icono y el input */
+}
+
+.search {
+    width: 100%; /* El input ocupa todo el espacio restante */
+    padding: 8px 12px; /* Más padding para darle un toque más espacioso */
+    font-size: 16px; /* Ajusta el tamaño de la fuente */
+    border: 1px solid hsl(169, 82%, 27%); /* Mismo color para consistencia */
+    border-radius: 5px; /* Esquinas suaves */
+    outline: none; /* Elimina el borde por defecto al hacer clic */
+    transition: box-shadow 0.3s ease; /* Transición suave para hover */
+}
+
+.search:focus {
+    box-shadow: 0 0 5px hsl(169, 82%, 27%); /* Sombra al hacer foco en el input */
+}
+
+
+.filtro {
+    display: none;
+}
