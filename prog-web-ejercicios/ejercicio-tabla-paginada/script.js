@@ -60,12 +60,12 @@ const addStudent = (event) => {
   students.push({ name, lastName });
   localStorage.setItem("students", JSON.stringify(students));
 
-  cargarAlumnos();
+  //cargarAlumnos();
 
   document.getElementById("name").value = "";
   document.getElementById("lastName").value = "";
 
-  window.location.href = "tabla.html"; // Redirigir a tabla.html
+  //window.location.href = "tabla.html"; // Redirigir a tabla.html
 };
 
 let limite = 5;
@@ -91,7 +91,7 @@ const cargarAlumnos = () => {
     if (arreglo.length % 5 != 0) {
       for (let i = 0; i < 5 - arreglo.length; i++) {
         const fila = document.createElement("tr");
-        const contenido = `<td>${"-"}</td><td>${"-"}</td>`;
+        const contenido = `<td>${""}</td><td>${""}</td>`;
         fila.innerHTML = contenido;
         tbody.append(fila);
       }
@@ -102,7 +102,7 @@ const cargarAlumnos = () => {
     head.style.display = "none";
     ul.style.display = "none";
     const fila = document.createElement("h4");
-    const contenido = "No hay alumnos cargados en memoria";
+    const contenido = "No hay alumnos cargados";
     fila.innerHTML = contenido;
     tbody.append(fila);
     return ;
@@ -114,14 +114,28 @@ const cargarAlumnosPaginacion = () => {
   document.querySelector("#items").innerHTML = "";
   let index = paginaActiva > 4 ? paginaActiva - 4 : 0;
   let limite = index + 5;
+  if(Math.ceil(paginas) < 5){
+    console.log("Dentro del if 1");
+    index = 0;
+    limite = Math.ceil(paginas);
+  }
   if (paginaActiva > Math.round(paginas)) {
+    console.log("Dentro del if 2");
     limite = Math.round(paginas) + 1;
     index = paginaActiva > 5 ? paginaActiva - 5 : 0;
   }
   if (paginaActiva == paginas) {
+    console.log("Dentro del if 3");
     limite = paginas;
     index = paginaActiva > 5 ? paginaActiva - 5 : 0;
   }
+  if(limite > Math.ceil(paginas)) {
+    console.log(`Limite ${limite}, pagina: ${paginas}`);
+    console.log("Dentro del if 4");
+    index -= 1;
+    limite -= 1;
+  }
+  console.log(`Index: ${index}, Limite: ${limite}`);
   for (index; index < limite; index++) {
     const item = document.createElement("li");
     item.classList = `page-item ${paginaActiva == index + 1 ? "active" : ""}`;

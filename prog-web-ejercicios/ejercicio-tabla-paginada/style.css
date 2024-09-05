@@ -7,6 +7,10 @@ body{
     font-family: "Karla", sans-serif;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     display:grid;
     align-items: center;
@@ -105,13 +109,29 @@ body{
 }  
 
 .table-div {
-    padding: 5px;
+    padding: 10px 25px;
 }
 
 .table-body td{
+    text-align: justify;
+}
+.thead-center th{
     text-align: center;
 }
 
+
+table th, table td {
+    width: 50%; /* El ancho de cada columna será igual */
+    height:30px; /* Define una altura fija para las filas */
+    text-align: center; /* Centra el texto dentro de la celda */
+    overflow: hidden; /* Evita que el contenido desborde */
+}
+
+.table-body h4 {
+    color: hsl(0, 66%, 54%);
+    font-size: 25px;
+    text-align: center;
+}
 table {
     width: 100%;
     border-collapse: collapse;
@@ -141,15 +161,37 @@ table {
     border-color: hsl(0, 66%, 54%) !important;
 }
 
+.ocultar {
+    background-color: white;
+}
 
-.page-item button{
+.nav-bar {
+    display: flex;
+    list-style-type: none;
+    justify-content: center;
+    padding: 0px 40px;
+}
+
+.nav-item button {
     border-radius: 5px;
+    padding: 5px 15px;
+    margin: 0px 5px;
+    background-color: white;
+    color: hsl(169, 82%, 27%);
+    border: solid 1px hsl(169, 82%, 27%);
+    font-size: 15px;
+}
+
+.nav-item button:hover {
+    background-color:hsl(169, 82%, 27%) ;
+    color: white;
 }
 
 .active button{
-    background-color:hsl(147, 88%, 27%) ;
+    background-color:hsl(169, 82%, 27%) ;
+    color: white;
 }
 
-.ocultar {
-    background-color: white;
+.div-nav {
+    display: flex;
 }

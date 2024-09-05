@@ -13,18 +13,20 @@
         <div class="table-div">
           <table>
             <thead>
-              <tr>
+              <tr class="thead-center">
                 <th>Nombre</th>
                 <th>Apellido</th>
               </tr>
             </thead>
             <tbody id="student_table" class="table-body"></tbody>
           </table>
-          <ul>
-            <li><button type="button" onclick="previousPage()">Anterior</button></li>
-            <li><div id="items"></div></li>
-            <li><button type="button" onclick="nextPage()">Siguiente</button></li>
-          </ul>
+          <nav>
+            <ul class="nav-bar">
+              <li class="nav-item"><button class="left-button" type="button" onclick="previousPage()">Anterior</button></li>
+              <li class="nav-item"><div id="items" class="div-nav" ></div></li>
+              <li class="nav-item"><button type="button" onclick="nextPage()">Siguiente</button></li>
+            </ul>
+          </nav>
         </div>
         <div class="div-a">
           <a href="index.html" class="boton-form">Volver</a>
