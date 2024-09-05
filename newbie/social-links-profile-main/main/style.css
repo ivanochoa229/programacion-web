@@ -1,0 +1,123 @@
+body {
+    background-color: hsl(0, 0%, 0%);
+    font-family: Inter;
+}
+
+.container {
+    display: flex;
+    justify-content: center;  /* Centrado horizontal */
+    align-items: center;      /* Centrado vertical */
+    height: 100vh;         /* Altura completa de la pantalla */
+    font-size: 14px;
+    padding: 0 20px;          /* Añade padding para asegurar que haya espacio en pantallas pequeñas */
+    box-sizing: border-box;
+}
+
+.card {
+    /*width: 25%;*/
+    width: 100%;              /* Haz que la tarjeta ocupe un ancho significativo */
+    max-width: 320px;         /* Limita el ancho máximo para que no se extienda demasiado */
+    /*height: 60%;*/
+    background-color:hsl(0, 0%, 8%);
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box;
+}
+
+.avatar-data {
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+}
+
+.avatar-h4 {
+    color: white;
+    font-size: 25px;
+    margin: 10px 0px;
+    font-weight: 700;
+}
+
+.avatar-img {
+    width: 30%;
+    height: 30%;
+    border-radius: 100%;
+    margin-bottom: 1em;
+    object-fit: cover;
+}
+
+.avatar-p {
+    color: hsl(75, 94%, 57%);
+}
+
+.avatar-desc {
+    color:white;
+    font-size: 14px;
+    margin-top: 10px;
+    font-style: italic;
+}
+
+.no-bullets {
+    list-style-type: none;
+    padding-left: 0;
+    margin-left: 0;    
+}
+
+.li-redes{
+    background-color: hsl(0, 0%, 20%);
+    text-align: center;
+    margin: 10px 0px;
+    border-radius: 8px;
+    width: 100%; 
+    box-sizing: border-box;
+    color: white;
+    padding: 12px 5px;
+    font-weight: 600;        /* Aumenta el peso de la fuente para que se vea más como un botón */
+    cursor: pointer;         /* Cambia el cursor al estilo de "puntero" para indicar que es interactivo */
+    transition: background-color 0.3s; /* Añade una transición suave al color de fondo */
+}
+
+.li-redes:hover {
+    background-color: hsl(0, 0%, 30%); /* Cambio de color en hover para indicar interacción */
+}
+
+@media (max-width: 768px) {
+    .card {
+        max-width: 90%;         /* Ensancha la tarjeta en pantallas medianas */
+    }
+
+    .avatar-h4 {
+        font-size: 22px;        /* Reduce el tamaño de fuente para pantallas medianas */
+    }
+
+    .avatar-img {
+        width: 80px;            /* Reduce el tamaño de la imagen en pantallas medianas */
+        height: 80px;
+    }
+
+    .li-redes {
+        padding: 10px 0;        /* Ajusta el padding de los botones para pantallas medianas */
+        font-size: 14px;        /* Ajusta el tamaño de la fuente en pantallas medianas */
+    }
+}
+
+@media (max-width: 480px) {
+    .card {
+        max-width: 100%;        /* Usa todo el ancho disponible en pantallas pequeñas */
+        padding: 15px;          /* Reduce el padding en pantallas pequeñas */
+    }
+
+    .avatar-h4 {
+        font-size: 20px;        /* Reduce el tamaño de fuente para pantallas pequeñas */
+    }
+
+    .avatar-img {
+        width: 60px;            /* Reduce aún más el tamaño de la imagen en pantallas pequeñas */
+        height: 60px;
+    }
+
+    .li-redes {
+        padding: 8px 0;         /* Ajusta el padding de los botones para pantallas pequeñas */
+        font-size: 12px;        /* Ajusta el tamaño de la fuente en pantallas pequeñas */
+    }
+}

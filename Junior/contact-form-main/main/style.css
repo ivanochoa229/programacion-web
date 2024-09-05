@@ -1,0 +1,163 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    background-color:  hsl(148, 38%, 91%);
+    font-size: 16px;
+    font-family: "Karla", sans-serif;
+    font-weight: 400;
+}
+
+label {
+   color: hsl(187, 24%, 22%);
+}
+
+button {
+    background-color: hsl(169, 82%, 27%);
+    color: white;
+    padding: 20px;
+    border-radius: 15px;
+    font-weight: 400;
+    font-size: 17px;
+}
+
+h2 {
+    margin: 10px 0px;
+    font-size: 30px;
+    font-weight: 700;
+}
+
+.error {
+    color: hsl(0, 66%, 54%);
+    height: 20px; /* Fija la altura del contenedor de error para evitar cambios en la distribución */
+    margin-top: 5px; /* Añade un pequeño margen para separación */
+}
+
+.error-border {
+    border-color: hsl(0, 66%, 54%) !important;
+}
+
+.container {
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;         
+    width: 100%;
+    margin: auto;
+}
+
+.card{
+    background-color: white;
+    padding: 30px; 
+    border-radius: 10px;  
+    width: 600px;
+}
+
+.formulario {
+    display: grid;
+    gap: 10px;
+}
+
+.caja_inicial {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: repeat(2,1fr);
+}
+
+
+
+.caja_query {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(2,1fr);
+}
+
+.query-border{
+    border: solid 1px hsl(169, 82%, 27%);
+    border-radius: 5px;
+    padding: 10px;
+}
+
+
+  .selected {
+    background-color: hsl(148, 38%, 91%);
+  }
+
+.caja input {
+    border: solid 2px hsl(169, 82%, 27%);
+    border-radius: 5px;
+    padding: 20px;
+    height: 20px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.caja textarea {
+    border: solid 2px hsl(169, 82%, 27%);
+    border-radius: 5px;
+    height: 100px;
+    width: 100%;
+    margin-top: 5px;
+    box-sizing: border-box;
+    resize: none;
+}
+
+
+.caja {
+    margin: auto;
+    width: 100%;
+}
+
+.hidden {
+    display: none;
+}
+
+.alert {
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: hsl(187, 24%, 22%);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: left;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    max-width: 80%;
+    animation: fadein 0.5s, fadeout 0.5s 2.1s;
+}
+
+.alert span {
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.alert p {
+    font-size: 14px;
+    font-weight: normal;
+    margin: 10px 0px;
+}
+
+.alert-content {
+    display: flex;
+    align-items: center; /* Alinea verticalmente la imagen y el texto */
+  }
+  
+  .alert-content img {
+    margin-right: 5px; /* Espacio entre la imagen y el texto */
+  }
+
+@keyframes fadein {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+@keyframes fadeout {
+    from { opacity: 1; }
+    to { opacity: 0; }
+}
+
+
+
+

@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&display=swap"
+      rel="stylesheet"
+    />
+
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="./assets/images/favicon-32x32.png"
+    />
+
+    <title>Frontend Mentor | Contact form</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="card">
+        <h2>Contact Us</h2>
+        <form class="formulario" id="formulario" action="" novalidate>
+          <div class="caja caja_inicial">
+            <div>
+              <label for="firstname">First Name</label><br />
+              <input type="text" name="firstname" id="firstname" required />
+              <div id="firstNameError" class="error"></div>
+            </div>
+            <div>
+              <label for="lastname">Last Name</label><br />
+              <input type="text" name="lastname" id="lastname" required />
+              <div id="lastnameError" class="error"></div>
+            </div>
+          </div>
+          <div class="caja caja_email">
+            <label for="email">Email Address</label><br />
+            <input type="email" name="email" id="email" />
+            <div id="emailError" class="error"></div>
+          </div>
+
+          <div class="caja_query">
+            <label for="quertyType"> Query Type </label><br />
+            <div class="query-border">
+              
+              <label for="generalEnquiry"> <input
+                type="radio"
+                name="queryType"
+                id="generalEnquiry"
+                required
+              /> General Enquiry</label>
+            </div>
+            <div class="query-border">
+              
+              <label for="supportRequest"> <input type="radio" name="queryType" id="supportRequest" /> Support Request</label>
+            </div>
+            <div id="queryTypeError" class="error"></div>
+          </div>
+
+          <div class="caja">
+            <label for="message">Message</label><br />
+            <textarea name="message" id="message" required></textarea>
+            <div id="messageError" class="error"></div>
+          </div>
+
+          <div>
+            <label for="consent">
+              <input type="checkbox" name="consent" id="consent" required />I
+              consent to being contacted by the team
+            </label>
+            <div id="consentError" class="error"></div>
+          </div>
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+    </div>
+    <div id="successAlert" class="alert hidden">
+      <div class="alert-content">
+        <img src="../assets/images/icon-success-check.svg" alt="succes"><span>Message Sent!</span>
+    </div>
+      <p>Thanks for completing the form. We’ll be in touch soon!</p>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>

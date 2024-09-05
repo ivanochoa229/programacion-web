@@ -1,0 +1,155 @@
+body{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+    font-size: 20px;
+    font-weight: 400;
+    font-family: "Karla", sans-serif;
+}
+
+.container {
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;         
+}
+
+.card {
+    border: solid 1px hsl(169, 82%, 27%);
+    border-radius: 5px;
+    width: 600px; /* Aumenta el ancho de la card */
+    padding: 20px; /* Añade padding para más espacio interno */
+}
+
+.card-title {
+    text-align: center;
+    margin: 15px 0px;
+    font-size: 28px;
+}
+
+.data-container-div {
+    display:grid;
+    align-items: center;
+    justify-content: center;
+    grid-template-columns: repeat(2,1fr);
+    gap: 15px;
+    margin: 10px auto;
+    padding: 5px;
+}
+
+.label-data-div {
+    padding: 5px 0px;
+    text-align: center;
+}
+
+.label-data-div label {
+    font-size: 20px;
+}
+
+.data-div {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centra los inputs horizontalmente dentro del data-div */
+}
+
+.data-div input{
+    width: 90%;
+    align-self: center;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 20px;
+    border: solid 1px hsl(169, 82%, 27%);
+    border-radius: 5px;
+}
+
+.data-div input::placeholder{
+    text-align: center;
+    font-size: 20px;
+}
+
+.div-boton{
+    display:grid;
+    grid-template-columns: repeat(2,0.25fr);
+    gap: 170px;
+    padding: 5px;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-a{
+    margin: auto;
+    padding: 5px;
+    display:grid;
+    align-items: center;
+    justify-content: center;
+}
+
+.div-a a, .div-boton a{ 
+    text-decoration: none;
+}
+
+.boton-form {
+    padding: 10px 25px;
+    color: white;
+    background-color: hsl(169, 82%, 27%);
+    border-radius: 10px;
+    border: solid 1px white;
+    font-size: 18px;
+}  
+
+
+.boton-form:hover {
+    background-color: white;
+    color: hsl(169, 82%, 27%);
+    border: solid 1px hsl(169, 82%, 27%);
+}  
+
+.table-div {
+    padding: 5px;
+}
+
+.table-body td{
+    text-align: center;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;   
+  }
+  
+  th {
+    background-color: hsl(169, 82%, 27%);
+    color: white;
+  }
+  
+  tr:hover {
+    background-color: hsl(148, 38%, 91%);
+  }
+
+  .error {
+    color: hsl(0, 66%, 54%);
+    height: 20px; /* Fija la altura del contenedor de error para evitar cambios en la distribución */
+    margin-top: 5px; /* Añade un pequeño margen para separación */
+}
+
+.error-border {
+    border-color: hsl(0, 66%, 54%) !important;
+}
+
+
+.page-item button{
+    border-radius: 5px;
+}
+
+.active button{
+    background-color:hsl(147, 88%, 27%) ;
+}
+
+.ocultar {
+    background-color: white;
+}
