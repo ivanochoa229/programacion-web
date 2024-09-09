@@ -88,7 +88,7 @@ let arreglo = arregloIntermedio.slice(desde, limite);
 
 paginas = arregloIntermedio.length / limite;
 
-arregloIntermedio.forEach((al) => console.log(al));
+//arregloIntermedio.forEach((al) => console.log(al));
 
 const cargarAlumnos = () => {
   alumnosVisibles = 0;
@@ -128,17 +128,17 @@ const cargarAlumnos = () => {
     const ul = document.querySelector("ul");
     head.style.display = "none";
     ul.style.display = "none";
-    const fila = document.createElement("h4");
-    const contenido = "No hay alumnos cargados";
-    fila.innerHTML = contenido;
-    tbody.append(fila);
+    const alert = document.createElement("h4");
+    //const contenido = ;
+    alert.innerHTML = "No hay alumnos cargados";
+    tbody.append(alert);
     return;
   }
   cargarAlumnosPaginacion();
 };
 
 const cargarAlumnosPaginacion = () => {
-  document.querySelector("#items").innerHTML = "";
+  document.getElementById("items").innerHTML = "";
   console.log(alumnosVisibles);
   let index = paginaActiva > 4 ? paginaActiva - 4 : 0;
   let limite = index + 5;
