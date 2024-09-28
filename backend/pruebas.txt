@@ -1,0 +1,9 @@
+{
+    "name":"Ingenieria en sistemas de Información",
+    "accredited": true
+}
+
+{
+    "name":"Nivel 1",
+    "id_career": 1
+}
