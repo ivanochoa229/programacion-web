@@ -1,0 +1,259 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+a{
+    text-decoration: none;
+    color: inherit;
+}
+
+hr{
+    margin: 0px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 5px;
+  }
+
+  th, td {
+    border: 1px solid black;
+    padding: 4px;   
+  }
+
+  li{
+    list-style-type: none;
+  }
+  table th, table td {
+    width: 40px;
+    height:30px; /* Define una altura fija para las filas */
+    text-align: center; /* Centra el texto dentro de la celda */
+    overflow: hidden; /* Evita que el contenido desborde */
+}
+
+button{
+    cursor: pointer;
+}
+
+h4{
+    text-align: center;
+    font-size: 30px;
+    color: red;
+}
+
+.button{
+    width: 65px;
+    grid-column: 1 / 2;
+    cursor: pointer;
+    padding: 5px 0 5px 0;
+}
+
+.button:hover{
+    background-color: rgb(1, 205, 205);
+    color: white;
+}
+
+
+.input{
+    grid-column: 2 / 3; 
+    padding: 5px;
+}
+
+.label{
+    grid-column: 1 / 2;
+}
+
+
+.sidebar li{
+    list-style: none;
+    padding: 5px;
+    margin-top: 7px;
+}
+
+.sidebar li:hover{
+    background: white;
+    color: black;
+    border-radius: 5px;
+}
+.sidebar a{
+    text-decoration: none;
+    color: black;
+}
+
+.sidebar-layout {
+    display: flex;
+    height: 100vh;
+}
+
+.sidebar {
+    width: 300px;
+    background-color: aqua;
+    color: black;
+    padding: 20px;
+}
+
+.content-main{
+    height: 100vh;
+    width: 100%;
+}
+
+.title{
+    text-align: start;
+    /*border-bottom: solid 2px rgb(1, 205, 205);*/
+    padding: 20px ;
+}
+
+.title-no-top-padding{
+    text-align: start;
+    /*border-bottom: solid 2px rgb(1, 205, 205);*/
+    padding: 0px 20px ;
+}
+.title-form{
+    display: flex;
+    justify-content: space-between;
+    /* border-bottom: solid 2px rgb(1, 205, 205); */
+    padding: 20px;
+}
+
+.cards{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 20px;
+    /* height: 600px; */
+}
+
+.cards-form{
+    display: flex;
+    margin-top: 20px;
+    justify-content: center;
+    align-items: center;
+}
+
+.alumn-card{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px 20px 10px;
+    width: 95%;
+    height: 120px;
+    border-radius: 3px;
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+    cursor: pointer;
+}
+
+.alumn-card:hover{
+    color: rgb(1, 205, 205);
+    border: 2px solid rgb(1, 205, 205);
+}
+
+.cards h1{
+    color: blueviolet;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    padding: 20px;
+}
+.content {
+    padding: 0px;
+}
+
+.header-div:last-child {
+    margin-left: auto;
+}
+
+.add-button {
+    padding: 10px 10px;
+    background: rgb(1, 205, 205);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.container-table {
+    padding: 20px;
+}
+
+.search{
+    display: grid;
+    grid-template-columns: 10fr 0.5fr;
+    gap: 5px;
+}
+
+.search-button{
+    border: none;
+    padding: 5px 2px;
+    
+}
+
+.button-nav{
+    padding: 4px;
+    border: none;
+}
+
+.active button{
+    background: greenyellow;
+    padding: 4px 5px;
+}
+
+.container-nav {
+    display: flex;
+    align-items: center; 
+    gap: 10px; 
+    justify-content: flex-end; 
+}
+
+.nav-bar {
+    display: flex;
+    list-style-type: none;
+    justify-content: flex-start; 
+    padding: 0;
+}
+
+.div-nav {
+    display: flex;
+}
+
+.back-button{
+    width: 70px;
+    background-color: red;
+    color: white;
+    padding: 10px 10px;
+    border-radius: 5px;
+}
+
+.alumn-form{
+    display: grid;
+    width: 95%;
+    gap: 5px;
+    grid-template-columns: repeat(2,1fr);
+    box-shadow: 0px 1px 4px 0px rgba(0, 0, 0, 0.75);
+    padding: 10px;
+    border-radius: 7px;
+}
+
+.add-student-button{
+    padding: 10px 0px;
+    background: rgb(1, 205, 205);
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.error-border {
+    border-color: hsl(0, 66%, 54%) !important;
+}
+
+.error {
+    color: hsl(0, 66%, 54%);
+    grid-column: 2 / 3; /* Se asegura de que el error esté debajo del input */
+    height: 20px; 
+    margin-top: 5px;
+    align-self: start; /* Asegura que el mensaje de error comience debajo del input */
+    justify-self: start;
+}
