@@ -1,0 +1,59 @@
+.layout-root {
+  height: 100vh;
+  display: flex;
+}
+
+.layout-sidebar {
+  padding: 20px 0 0 20px;
+  background-color: aquamarine;
+}
+
+.layout-sidebar nav ul li {
+  list-style: none;
+  padding: 5px 0 5px 0;
+}
+
+.layout-sidebar nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.layout-sidebar nav .menu-selected {
+  background-color: beige;
+  padding: 5px;
+}
+
+.layout-sidebar h2 {
+  margin: 0px 5px;
+}
+
+.layout-main-content {
+  flex: 1;
+  background-color: antiquewhite;
+}
+
+
+.header{ 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-button {
+  margin-right: 20px ;  
+}
+
+.header-button button{
+  padding: 5px 15px;  
+  background: aqua;
+  border: 1px solid black;
+  border-radius: 5px;
+  color: white;
+  cursor: pointer;
+}
+
+
+.header h2 {
+  text-align: start;
+  padding: 0px 20px;
+}
