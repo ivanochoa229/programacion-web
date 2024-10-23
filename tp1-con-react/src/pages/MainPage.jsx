@@ -1,43 +1,20 @@
-import PropTypes from "prop-types";
-import './mainPage.css'
-import { useLocation, useNavigate } from "react-router-dom";
-export const MainPage = ({title, content, isActive}) => {
+import './mainPage.css';
+import { PageContent } from '../components/PageContent';
+import { useNavigate } from 'react-router-dom';
+export const MainPage = () => {
   const navigate = useNavigate();
-  const location = useLocation();
-  const handleOnClick = () => {
-    if(location.pathname === '/students') {
-      navigate('/add-students');
-    }else{
-      navigate('/students');
-    }
-  }
+
+  const HandleOnClick = () => {
+    navigate('/');
+  };
 
   return (
-
     <>
-      <header className="header">
-        <div className="header-title">
-          <h2>{title}</h2>
+      <PageContent  headerTitle='Página Principal'>
+        <div  className='main-page' onClick={HandleOnClick}>
+          <h2>Módulo Alumnos</h2>
         </div>
-        <div className="header-button">
-        {
-          isActive && (
-            <button onClick={handleOnClick}>
-              {location.pathname === '/students' ? 'Agregar' : 'Volver'}
-            </button>
-          )
-        }
-        </div>
-      </header>
-      <hr/>
-      {content }
-      
+      </PageContent>
     </>
   );
 };
-
-MainPage.propTypes = {
-  title:PropTypes.string,
-  content:PropTypes.object,
-  isActive:PropTypes.bool
-}

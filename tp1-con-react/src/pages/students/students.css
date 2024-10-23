@@ -14,6 +14,10 @@
   .table-row {
     border-bottom: 1px solid #ddd;
   }
+
+  .table-row td {
+    background: lavender;
+  }
   
   .table-row th {
     padding: 12px 15px;
