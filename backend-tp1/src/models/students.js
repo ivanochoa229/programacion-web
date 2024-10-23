@@ -16,6 +16,11 @@ class students extends Model{
                 lastname:{
                     type: DataTypes.STRING,
                     allowNull:false
+                },
+                deleted:{
+                    type: DataTypes.BOOLEAN,
+                    values: [0, 1],
+                    defaultValue: 0
                 }
             },
             {
