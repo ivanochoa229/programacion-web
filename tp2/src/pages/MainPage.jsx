@@ -11,8 +11,8 @@ export const MainPage = () => {
   return (
     <>
       <PageContent  headerTitle='Página Principal'>
-        <div  className='main-page' onClick={HandleOnClick}>
-          <h2>Módulo Alumnos</h2>
+        <div className='main-page' onClick={HandleOnClick}>
+          <h1>Módulo Alumnos</h1>
         </div>
       </PageContent>
     </>

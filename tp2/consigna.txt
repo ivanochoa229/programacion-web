@@ -1,0 +1,60 @@
+Frontend (React)
+
+Se debe realizar 3 páginas:
+Página inicio o Overview, donde se mostrará una Card del Módulo Alumno.
+Página alumno, se mostrará una tabla listando las columnas relacionadas a datos de alumnos (legajo, nombre, apellido, acciones) se debe incluir la opción de borrado.
+Página alta de alumno, se muestra un formulario, que posee los campos necesarios para dar de alta un alumno, con las validaciones correspondientes (nombre, apellido, DNI, email, dirección - ambos requerido).
+Una vez que se dé de alta un nuevo alumno, se debe regresar a la  página que lista los alumnos.
+
+Mockup (ver diseños en los archivos .jpg que corresponde a tp1, y ver video)
+
+Layout que se repite en las 3 páginas:
+menú vertical: ancho 200px, color de fondo darkturquoise, padidng a la izquierda de 20px, sombreado "0px 0px 2px 0px rgba(0,0,0,0.75)".
+menú vertical - link menú seleccionado: color fondo blanco, padding a la izquierda de 10px, grosor de fuente 700. 
+menú vertical - link menú hover: color de fondo paleturquoise.
+cabecera - titulo: sombreado "0px 1px 2px -1px rgba(0, 0, 0, 0.75)", padding solo laterales de 20px, tamaño de letra usar tag h2.
+cabecera - botón de navegación/agregar: sombreado "0px 0px 0px 1px rgba(0, 0, 0, 0.75)", color de fondo darkturquoise, color de texto blanco, padding 7px.
+cabecera - botón atrás: color de fondo rojo, color de letra blanco.
+
+Componentes visuales (card, table - search - pagination, form):
+Card:
+padding superior e inferior de 20px.
+texto alineado en el centro.
+sombreado "0px 1px 4px 0px rgba(0, 0, 0, 0.75)".
+tamaño de letra usar tag h1.
+Table-Search-Pagination:
+Search: input y botón uno al lado de otro, input debe ocupar el mayor espacio. Margen inferior de 5px.
+Table: border = 1, ancho 100%, bordes colapsados.
+Pagination: lista desplegable y botones uno al lado de otro, ubicados a la derecha de la página. Margen superior de 5px.
+Form - Validaciones:
+etiquetas e inputs alineados con grid en 2 columnas.
+Nombre, Apellido, DNI y Email requeridos - mensaje de error.
+Nombre, Apellido y Email validación de máxima longitud de 100 - mensaje de error.
+Email validación de formato de email usando el pattern /^[^\s@]+@[^\s@]+\.[^\s@]+$/   - mensaje de error.
+DNI validación de máxima longitud de 10 - mensaje de error.
+DNI validación de formato números usando el pattern /^[0-9]{1,10}$/   - mensaje de error.
+El botón agregar debe llevar el estilo "boton de navegación/agregar" (reusar class de Layout   -> "cabecera - botón de navegación/agregar").
+Padding 10px.
+Sombreado "0px 1px 4px 0px rgba(0, 0, 0, 0.75)".
+NOTA: DEBEN REUTILIZAR COMPONENTES EN CASO DE SER NESARIO - EJEMPLO BUTTON
+
+--- Configuración para conectar a backend (copiar lo siguiente en el archivo vite.config.js)
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+
+// https://vitejs.dev/config/
+export default defineConfig({
+  plugins: [react()],
+  server: {
+    cors: true,
+   
+    proxy: {
+      '/api': {
+        target: 'http://localhost:3000&#39;,
+        headers: {
+          'content-type': 'application/json; charset=utf-8'
+        },
+      }
+    }
+  }
+});

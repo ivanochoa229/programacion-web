@@ -4,8 +4,8 @@ export const PageContent = ({children, headerTitle = '', actions=[]}) => {
     return (
         <div className='page-content'>
           <header className='page-content__header'>
-            <div>
-              { headerTitle }
+            <div className="title-page-content">
+              <h2>{ headerTitle }</h2>
             </div>
             <div className='page-content__header_actions'>
               { [ ...actions ] }
