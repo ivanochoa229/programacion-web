@@ -1,5 +1,5 @@
 const validateBody = (req, res, next) => {
-    if (!req.body.name) {
+    if (!req.body.firstname) {
         res.status(400).json({
             message: 'name field is required.'
         });
@@ -10,19 +10,22 @@ const validateBody = (req, res, next) => {
     next();
   };
   
-  const validateById = (req, res, next) => {
+  const validateBySid = (req, res, next) => {
     
-    if (isNaN(Number(req.params.id))) {
-        res.status(400).json(CAREERS_0002);
+    if (isNaN(Number(req.params.sid))) {
+        res.status(400).json({
+          message: 'Sid must be a number.'
+      });
         return;
     }
   
-    req.params.id = Number(req.params.id);
+    req.params.sid = Number(req.params.sid);
   
     next();
   };
+
   
   module.exports = {
     validateBody,
-    validateById
+    validateBySid
   }

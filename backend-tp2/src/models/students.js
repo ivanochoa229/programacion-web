@@ -9,7 +9,7 @@ class students extends Model{
                     autoIncremente:true,
                     primaryKey: true
                 },
-                name:{
+                firstname:{
                     type: DataTypes.STRING,
                     allowNull:false
                 },
@@ -21,12 +21,33 @@ class students extends Model{
                     type: DataTypes.BOOLEAN,
                     values: [0, 1],
                     defaultValue: 0
+                },
+                email:{
+                    type: DataTypes.STRING,
+                    allowNull:false
+                },
+                dni:{
+                    type:DataTypes.INTEGER,
+                    allowNull:false
+                },
+                sid:{
+                    type:DataTypes.INTEGER,
+                    allowNull:false
+                },
+                createdAt:{
+                    type:DataTypes.DATE,
+                    allowNull: true
+                },
+                updatedAt:{
+                    type:DataTypes.DATE,
+                    allowNull: true
                 }
+
             },
             {
                 sequelize,
                 modelName:'students',
-                timestamps: false
+                timestamps:false
             }
         );
         return this;

@@ -1,4 +1,4 @@
-const { validateBody, validateById } = require('../middleware/studentsMiddleware');
+const { validateBody, validateBySid } = require('../middleware/studentsMiddleware');
 
 StudentService = require('../services/studentService');
 express = require('express');
@@ -7,19 +7,34 @@ router = express.Router();
 
 router.get('/', async (req, res) => {
     try {
-        const students = await StudentService.findAll();
+        const search = req.query.search || '';
+        const page = Number(req.query.page) || 1;
+        const pageSize = Number(req.query.pageSize) || 5;
+        const students = await StudentService.findAll(search, page, pageSize);
         res.json(students);
     } catch (err) {
         res.sendStatus(500);
     }
 });
 
-router.get('/:id', validateById, async (req, res) => {
+router.get('/length', async (req, res) => {
     try {
-        const student = await StudentService.findById(Number(req.params.id));
+        const length = await StudentService.lengthStudent();
+        res.json(length);
+    } catch (err) {
+        res.sendStatus(500);
+    }
+});
+
+
+
+
+router.get('/:sid', validateBySid, async (req, res) => {
+    try {
+        const student = await StudentService.findById(Number(req.params.sid));
         if(!student){
             return res.status(404).json({
-                message:`Student not found with id = ${req.params.id}`
+                message:`Student not found with sid = ${req.params.sid}`
             });
         }
         res.json(student);
@@ -27,6 +42,7 @@ router.get('/:id', validateById, async (req, res) => {
         res.sendStatus(500);
     }
 });
+
 
 router.post('/', validateBody, async (req, res) => {
     try{
@@ -37,14 +53,14 @@ router.post('/', validateBody, async (req, res) => {
     }
 });
 
-router.put('/:id', validateById, validateBody, async(req, res) => {
+router.put('/:sid', validateBySid, validateBody, async(req, res) => {
     try {
-        const updatedStudent = await StudentService.updateStudent(req.body, Number(req.params.id));
+        const updatedStudent = await StudentService.updateStudent(req.body, Number(req.params.sid));
         res.sendStatus(204);
     } catch (err) {
         if (err.message === 'Student not found or deleted') {
             return res.status(404).json({
-              message: `Student not found with id = ${req.params.id}`,
+              message: `Student not found with sid = ${req.params.sid}`,
             });
           }
         console.log(`Error: ${err}`);
@@ -52,12 +68,12 @@ router.put('/:id', validateById, validateBody, async(req, res) => {
     }
 })
 
-router.delete('/:id', validateById, async(req, res) => {
+router.delete('/:sid', validateBySid, async(req, res) => {
     try {
-        const student = await StudentService.deleteStudent(req.params.id)
+        const student = await StudentService.deleteStudent(req.params.sid)
         if(!student){
             return res.status(404).json({
-                message:`Student not found with id = ${req.params.id}`
+                message:`Student not found with id = ${req.params.sid}`
              });
         };
         res.sendStatus(204);

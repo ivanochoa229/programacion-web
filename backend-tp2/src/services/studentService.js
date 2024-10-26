@@ -1,8 +1,8 @@
 StudentRepository = require("../repository/studentRepository");
 
-const findAll = async () => {
+const findAll = async (search, page, pageSize) => {
   try {
-    students = await StudentRepository.findAll();
+    students = await StudentRepository.findAll(search, page, pageSize);
     return students;
   } catch (err) {
     console.log(`studentsService ${err}`);
@@ -10,9 +10,9 @@ const findAll = async () => {
   }
 };
 
-const findById = async (id) => {
+const findBySid = async (sid) => {
   try {
-    student = await StudentRepository.findById(id);
+    student = await StudentRepository.findBySid(id);
     return student;
   } catch (err) {
     console.log(`studentsService ${err}`);
@@ -20,19 +20,20 @@ const findById = async (id) => {
   }
 }
 
+
 const createStudent = async(student) => {
     try {
-        student = await StudentRepository.createStudent(student);
-        return student;
+        const newStudent = await StudentRepository.createStudent(student);
+        return newStudent;
     } catch (err) {
         console.log(`studentsService ${err}`);
         throw err;
     }
 }
 
-const updateStudent = async (payload, id) => {
+const updateStudent = async (payload, sid) => {
   try{
-    const rowsUpdated = await StudentRepository.updateStudent({name:payload.name , lastname:payload.lastname}, id);
+    const rowsUpdated = await StudentRepository.updateStudent({firstname:payload.firstname , lastname:payload.lastname, email:payload.email, dni:payload.dni}, sid);
     if (rowsUpdated === 0) {
       throw new Error('Student not found or deleted');
     }
@@ -43,14 +44,23 @@ const updateStudent = async (payload, id) => {
   }
 }
 
-const deleteStudent = async (id) => {
+const deleteStudent = async (sid) => {
   try {
-    await StudentRepository.deleteStudent(id);
+    await StudentRepository.deleteStudent(sid);
     return true;
-  } catch (error) {
+  } catch (err) {
     console.log(`studentsService ${err}`);
     throw err;
   }
 }
 
-module.exports = { deleteStudent,findAll , findById,createStudent, updateStudent};
+const  lengthStudent = async() => {
+  try {
+    return await StudentRepository.lengthStudent();
+  } catch (err) {
+    console.log(`studentsService ${err}`);
+    throw err;
+  }
+}
+
+module.exports = { deleteStudent,findAll , findBySid,createStudent, updateStudent,  lengthStudent};
