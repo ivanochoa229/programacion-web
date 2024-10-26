@@ -1,10 +1,10 @@
-import { array, object, string } from "prop-types"
+import { array, object, string } from 'prop-types'
 import './pageContent.css'
 export const PageContent = ({children, headerTitle = '', actions=[]}) => {
     return (
         <div className='page-content'>
           <header className='page-content__header'>
-            <div className="title-page-content">
+            <div className='title-page-content'>
               <h2>{ headerTitle }</h2>
             </div>
             <div className='page-content__header_actions'>

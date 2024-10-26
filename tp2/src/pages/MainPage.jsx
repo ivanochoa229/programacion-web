@@ -10,7 +10,7 @@ export const MainPage = () => {
 
   return (
     <>
-      <PageContent  headerTitle='Página Principal'>
+      <PageContent headerTitle='Página Principal'>
         <div className='main-page' onClick={HandleOnClick}>
           <h1>Módulo Alumnos</h1>
         </div>
