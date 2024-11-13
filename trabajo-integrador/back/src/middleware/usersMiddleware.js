@@ -1,4 +1,4 @@
-JwtService = require('jwtService');
+const JwtService = require('../services/jwtService');
 
 const validateBody = (req, res, next) => {
     const username = req.body.username;

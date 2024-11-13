@@ -1,6 +1,6 @@
 UsersRepository = require('../repository/usersRepository');
 const bcrypt = require('bcrypt');
-JwtService = requiere('jwtService');
+const JwtService = require('./jwtService');
 
 const createUser = async(user) => {
     try {
