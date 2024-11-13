@@ -17,7 +17,7 @@ const createUser = async(user) => {
         user.password = hashedPassword;
         user.createdAt = new Date(); 
         const newUser = await UsersRepository.createUser(user);
-        response = serializeReponse(newUser);
+        response = serializeResponse(newUser);
         return response;
 
     } catch (err) {
@@ -37,14 +37,14 @@ const loginUser = async(user) => {
       }
 
     const isValid = await bcrypt.compare(user.password, existentUser.password);
-    
+
     if(!isValid){
         const error = new Error(`nombre de usuario o contraseña invalida`);
         error.status = 400;  
         throw error;
     }
 
-    response = serializeReponse(existentUser);
+    response = serializeResponse(existentUser);
     return response;
 
 } 
@@ -59,7 +59,7 @@ const findByUsername = async (username) => {
     }
   }
 
-  const serializeReponse = (user) => {
+  const serializeResponse = (user) => {
 
     token = JwtService.generateToken(user);
 

@@ -1,7 +1,6 @@
 const jwt = require('jsonwebtoken');
 const jwtEpiration = parseInt(process.env.JWT_EXPIRATION, '30m');
 const secretKey = parseInt(process.env.SECRET_KEY, 'asdasdfsdfdszgdfhfjgfhjhg[][SDasd');
-const UserService = require('usersService');
 
 const generateToken = (user) => {
 
@@ -17,4 +16,16 @@ const generateToken = (user) => {
 
 const validateToken = (token) => {
 
+    try{
+        return jwt.verify(token,secretKey);
+    }
+    catch(err){
+        console.log('token invalido o expirado', err);
+    }
+
+
+    module.exports = {
+        generateToken,
+        validateToken
+      };
 }
