@@ -9,14 +9,19 @@ import {LoginPage} from './pages/Login/LoginPage'
 import './index.css'
 import ProtectedRoutes from './pages/Login/components/ProtectedRoutes';
 import { AuthProvider } from './pages/Login/components/AuthProvider';
+import { RegisterPage } from './pages/Login/RegisterPage';
 
 const router = createBrowserRouter([
   {
     path: '/login',
-    element: <LoginPage /> // Ruta de inicio de sesión
+    element: <LoginPage /> 
   },
   {
-    element: <ProtectedRoutes />, // Envolver todas las rutas protegidas
+    path:'/register',
+    element: <RegisterPage />
+  },
+  {
+    element: <ProtectedRoutes />, 
     children: [
       {
         path: '/',

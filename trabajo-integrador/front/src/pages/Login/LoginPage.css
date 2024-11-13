@@ -18,8 +18,9 @@
   }
   
   .login-fields label {
-    font-size: 14px;
+    font-size: 16px;
     color: #333333;
+    font-weight: 600;
   }
   
   .login-fields input {
@@ -54,4 +55,14 @@
   
   .login-button button:hover {
     background-color: #2563eb;
+  }
+
+  .p-login{
+    color: #2563eb;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .p-login:hover {
+    color: green;
   }

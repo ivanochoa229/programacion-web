@@ -12,15 +12,22 @@ export const LoginPage = () => {
     navigate('/'); 
   };
 
+  const handlOnClick = () => {
+    navigate('/register'); 
+  }
+
   return (
     <div className="login-content">
       <div className="card-login">
         <form onSubmit={handleOnSubmit}>
           <div className="login-fields">
             <label>Usuario</label>
-            <input type="text" placeholder="Ingrese un usuario" />
+            <input type="text" placeholder="Ingrese su usuario" />
             <label>Contraseña</label>
-            <input type="password" placeholder="Ingrese una contraseña" />
+            <input type="password" placeholder="Ingrese su contraseña" />
+          </div>
+          <div className="p-login">
+            <p onClick={handlOnClick}>Registrarse</p>
           </div>
           <div className="login-button">
             <button type="submit">Iniciar Sesión</button>
