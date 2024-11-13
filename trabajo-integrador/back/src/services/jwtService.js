@@ -16,16 +16,10 @@ const generateToken = (user) => {
 
 const validateToken = (token) => {
 
-    try{
-        return jwt.verify(token,secretKey);
-    }
-    catch(err){
-        console.log('token invalido o expirado', err);
-    }
-
+    return jwt.verify(token,secretKey);
+};
 
     module.exports = {
         generateToken,
         validateToken
-      };
-}
+    };
