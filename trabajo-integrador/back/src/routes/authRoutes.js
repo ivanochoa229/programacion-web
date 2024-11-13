@@ -4,7 +4,7 @@ express = require('express');
 UsersService = require('../services/usersService');
 router = express.Router();
 
-router.get('/login', validateBody, async(req, res) => {
+router.post('/login', validateBody, async(req, res) => {
     try {
 
       const response = await UsersService.loginUser(req.body);

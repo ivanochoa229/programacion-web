@@ -8,7 +8,7 @@ const generateToken = (user) => {
     userId = user.id;
     const token = jwt.sign(
         {userId, username},
-        secretKey,
+        "secretKey",
         jwtEpiration);
 
         return token;
@@ -16,7 +16,7 @@ const generateToken = (user) => {
 
 const validateToken = (token) => {
 
-    return jwt.verify(token,secretKey);
+    return jwt.verify(token,"secretKey");
 };
 
     module.exports = {

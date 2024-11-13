@@ -17,7 +17,8 @@ const findById = async (id) => {
   const createUser = async (user) => {
     try {
   
-      const newUser = await Users.create(user);
+      await Users.create(user);
+      const newUser = await findByUsername(user.username);
       return newUser;
      
     } catch (err) {
@@ -27,7 +28,7 @@ const findById = async (id) => {
   };
 
   const findByUsername = async (user) => {
-    return await User.findOne({
+    return await Users.findOne({
       where: {
         deleted: 0,
         username: user,

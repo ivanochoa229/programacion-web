@@ -1,19 +1,20 @@
-UsersRepository = require('../repository/usersRepository');
+const UsersRepository = require('../repository/usersRepository');
 const bcrypt = require('bcrypt');
 const JwtService = require('./jwtService');
+//const saltRounds = parseInt(process.env.SALT_ROUNDS, 10);
 
 const createUser = async(user) => {
     try {
 
         const existingUser = await findByUsername(user.username);
 
-        if (!existingUser) {
+        if (existingUser) {
             const error = new Error(`El usuario ${user.username} ya existe.`);
              error.status = 400;  
             throw error;
           }
 
-        const hashedPassword = await bcrypt.hash(user.password, saltRounds);
+        const hashedPassword = await bcrypt.hash(user.password, 10);
         user.password = hashedPassword;
         user.createdAt = new Date(); 
         const newUser = await UsersRepository.createUser(user);
@@ -51,10 +52,10 @@ const loginUser = async(user) => {
 
 const findByUsername = async (username) => {
     try {
-      student = await StudentRepository.findByUsername(username);
-      return student;
+      user = await UsersRepository.findByUsername(username);
+      return user;
     } catch (err) {
-      console.log(`studentsService ${err}`);
+      console.log(`usersService ${err}`);
       throw err;
     }
   }
@@ -63,9 +64,9 @@ const findByUsername = async (username) => {
 
     token = JwtService.generateToken(user);
 
-        response = {
-            username: newUser.username,
-            date: newUser.createdAt,
+        return response = {
+            username: user.username,
+            date: user.createdAt,
             jwt: token
         }
   }
