@@ -1,17 +1,21 @@
 const { validateBody } = require('../middleware/usersMiddleware');
-const jwtService = requiere('jwtService');
 
 express = require('express');
 UsersService = require('../services/usersService');
 router = express.Router();
 
-router.get('/login', (req, res) => {
+router.get('/login', validateBody, async(req, res) => {
     try {
-        username = req.body.username;
-        password = req.body.password;
+
+      const response = await UsersService.loginUser(req.body);
+      res.status(200).json(response);
 
     } catch (err) {
-        
+      if (err.status === 400) {
+        res.status(400).json({ message: err.message });
+      } else {
+        res.status(500).json({ message: 'Error del servidor' });
+      }
     }
 });
 
