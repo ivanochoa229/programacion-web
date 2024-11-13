@@ -1,5 +1,6 @@
 UsersRepository = require('../repository/usersRepository');
 const bcrypt = require('bcrypt');
+JwtService = requiere('jwtService');
 
 const createUser = async(user) => {
     try {
@@ -16,7 +17,14 @@ const createUser = async(user) => {
         user.password = hashedPassword;
         user.createdAt = new Date(); 
         const newUser = await UsersRepository.createUser(user);
-        return newUser;
+        token = JwtService.generateToken(newUser);
+
+        response = {
+            username: newUser.username,
+            date: newUser.createdAt,
+            jwt: token
+        }
+        return response;
 
     } catch (err) {
         console.log(`UsersService ${err}`);

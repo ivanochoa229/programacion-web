@@ -9,7 +9,7 @@ router.get('/login', (req, res) => {
     try {
         username = req.body.username;
         password = req.body.password;
-        
+
     } catch (err) {
         
     }
@@ -17,8 +17,8 @@ router.get('/login', (req, res) => {
 
 router.post('/register', validateBody,  async (req, res) => {
     try{
-        const newUser = await UsersService.createUser(req.body);
-        res.status(201).json(newUser);
+        const response = await UsersService.createUser(req.body);
+        res.status(201).json(response);
     }catch (err) {
         if (err.status === 400) {
           res.status(400).json({ message: err.message });

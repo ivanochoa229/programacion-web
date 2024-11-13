@@ -17,8 +17,8 @@ const findById = async (id) => {
   const createUser = async (user) => {
     try {
   
-      const newStudent = await Users.create(user);
-      return newStudent;
+      const newUser = await Users.create(user);
+      return newUser;
      
     } catch (err) {
       console.log(`usersRepository ${err}`);

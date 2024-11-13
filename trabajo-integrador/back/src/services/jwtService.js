@@ -3,11 +3,7 @@ const jwtEpiration = parseInt(process.env.JWT_EXPIRATION, '30m');
 const secretKey = parseInt(process.env.SECRET_KEY);
 const UserService = require('usersService');
 
-const createToken = (username, password) => {
-
-    user = UserService.findByUsername(username);
-
-   
+const generateToken = (user) => {
 
     username = user.username;
     userId = user.id;
