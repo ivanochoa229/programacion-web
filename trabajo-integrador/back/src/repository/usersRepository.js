@@ -1,4 +1,4 @@
-const bcrypt = require('bcrypt');
+
 const Users = require('../models/users');
 const saltRounds = parseInt(process.env.SALT_ROUNDS, 10);
 
@@ -16,27 +16,26 @@ const findById = async (id) => {
 
   const createUser = async (user) => {
     try {
-      const existingUser = await Users.findOne({
-        where: {
-            username: user.username
-        }
-      });
   
-      if (existingUser) {
-        const error = new Error(`El usuario con el username ${user.username} ya se encuentra registrado.`);
-         error.status = 400;  
-        throw error;
-      }
-  
-      const hashedPassword = await bcrypt.hash(user.password, saltRounds);
-      user.password = hashedPassword;
-      user.createdAt = new Date(); 
-      const newUser = await Users.create(user);
-      return newUser;
+      const newStudent = await Users.create(user);
+      return newStudent;
+     
     } catch (err) {
       console.log(`usersRepository ${err}`);
       throw err;
     }
   };
 
-  module.exports = {findById, createUser};
+  const findByUsername = async (user) => {
+    return await User.findOne({
+      where: {
+        deleted: 0,
+        username: user,
+      },
+      attributes: {
+        exclude: "deleted, createdUp, updatedAt",
+      },
+    });
+  };
+
+  module.exports = {findById, createUser, findByUsername};

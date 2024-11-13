@@ -1,4 +1,5 @@
 const { validateBody } = require('../middleware/usersMiddleware');
+const jwtService = requiere('jwtService');
 
 express = require('express');
 UsersService = require('../services/usersService');
@@ -6,6 +7,8 @@ router = express.Router();
 
 router.get('/login', (req, res) => {
     try {
+        username = req.body.username;
+        password = req.body.password;
         
     } catch (err) {
         
