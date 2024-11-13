@@ -1,0 +1,73 @@
+ul{
+  padding-inline-start: 0px;
+}
+
+.layout-root {
+  height: 100vh;
+  display: flex;
+}
+
+.layout-sidebar {
+  padding: 0;
+  background-color: darkturquoise;
+  width: 200px;
+  padding-left: 20px;
+  box-shadow: 0px 0px 2px 0px rgba(0,0,0,0.75);
+}
+
+.layout-sidebar nav ul li {
+  list-style: none;
+  padding: 5px 0 5px 0;
+}
+
+.layout-sidebar nav ul li a {
+  text-decoration: none;
+  color: black;
+}
+
+.layout-sidebar nav .menu-selected {
+  background-color: white;
+  padding-left: 10px;
+  font-weight: 700;
+}
+.layout-sidebar li:hover{
+  background-color: paleturquoise;
+}
+
+
+.layout-sidebar h2 {
+  margin: 0px 5px;
+}
+
+.layout-main-content {
+  flex: 1;
+  background-color: white;
+}
+
+.header{ 
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.header-button {
+  margin-right: 20px ;  
+}
+
+.header-button button{
+  box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 0.75);
+  background: darkturquoise;
+  color: white;
+  padding: 7px;
+  cursor: pointer;
+}
+
+.header h2 {
+  text-align: start;
+  padding: 0px 20px;
+}
+
+.title-sidebar{
+  padding: 20px 0 0 0;
+  font-size: 20px;
+}
