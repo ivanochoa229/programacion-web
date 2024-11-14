@@ -1,7 +1,7 @@
 const { Sequelize } = require("sequelize");
 let seqInstance = null;
 const createInstance = async () => {
-  const instance = new Sequelize('tfi', "root", "root", {
+  const instance = new Sequelize('tfi', "root", "", {
     host: "localhost",
     dialect: "mysql",
     pool: {
