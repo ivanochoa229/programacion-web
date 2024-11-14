@@ -1,13 +1,18 @@
-import { createContext, useState, useContext } from "react";
+import { createContext, useState, useContext} from "react";
 
 const AuthContext = createContext();
 
 // eslint-disable-next-line react/prop-types
 export const AuthProvider = ({ children }) => {
-  const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [isAuthenticated, setIsAuthenticated] = useState(() => {
+    return !!sessionStorage.getItem("token");
+  });
 
   const login = () => setIsAuthenticated(true);
-  const logout = () => setIsAuthenticated(false);
+  const logout = () => {
+    setIsAuthenticated(false);
+    sessionStorage.removeItem("token");
+  };
 
   return (
     <AuthContext.Provider value={{ isAuthenticated, login, logout }}>

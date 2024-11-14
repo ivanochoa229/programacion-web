@@ -1,11 +1,13 @@
 import { useNavigate } from "react-router-dom";
 import { useForm } from 'react-hook-form';
+import { useAuth } from "./components/AuthProvider";
 
 import "./LoginPage.css";
 import { Login } from "../../service/auth/authSerivice";
 
 export const LoginPage = () => {
   const navigate = useNavigate();
+  const { login } = useAuth(); 
 
   const handlOnClick = () => {
     navigate('/register'); 
@@ -24,7 +26,10 @@ export const LoginPage = () => {
 
       const OnSubmit = async ({inputUsernameValue, inputPasswordValue}) => {
         const response = await Login(inputUsernameValue, inputPasswordValue);
-        console.log(response);
+        if(response){
+          login();
+          navigate('/');
+        }
       };
 
 

@@ -126,7 +126,7 @@ export const MainStudents = () => {
                   <td className='td-back-button'>
                     <button
                       className='back-button'
-                      onClick={() => handleDelete(s.sid, s.name, s.lastname)}
+                      onClick={() => handleDelete(s.sid, s.firstname, s.lastname)}
                     >
                       Borrar
                     </button>

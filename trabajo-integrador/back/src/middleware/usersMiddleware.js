@@ -16,17 +16,20 @@ const validateBody = (req, res, next) => {
 
 const validateToken = (req, res, next) => {
 
-  userData = null;
-  req.session = {user: null};
+  //userData = null;
+  //req.session = {user: null};
 
-  const token = req.headers.authorization?.split(' ')[1];
+  //const token = req.headers.authorization?.split(' ')[1];
+  const authHeader = req.headers.authorization;
+  const token = authHeader && authHeader.split(" ")[1];
     if (!token) {
+      console.log('hole');
         return res.status(401).json({ message: 'Authentication required' });
     }
 
     try{
       userData = JwtService.validateToken(token); 
-      req.session.user = userData;
+      //req.session.user = userData;
 
     }catch(err){
 

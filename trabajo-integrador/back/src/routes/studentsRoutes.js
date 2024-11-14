@@ -1,11 +1,13 @@
+
 const { validateBody, validateBySid } = require('../middleware/studentsMiddleware');
+const { validateToken } = require('../middleware/usersMiddleware');
 
 StudentService = require('../services/studentService');
 express = require('express');
 
 router = express.Router();
 
-router.get('/', async (req, res) => {
+router.get('/', validateToken , async (req, res) => {
     try {
         const search = req.query.search || '';
         const page = Number(req.query.page) || 1;
@@ -17,7 +19,7 @@ router.get('/', async (req, res) => {
     }
 });
 
-router.get('/length', async (req, res) => {
+router.get('/length', validateToken, async (req, res) => {
     try {
         const length = await StudentService.lengthStudent();
         res.json(length);
@@ -29,7 +31,7 @@ router.get('/length', async (req, res) => {
 
 
 
-router.get('/:sid', validateBySid, async (req, res) => {
+router.get('/:sid', validateToken, validateBySid, async (req, res) => {
     try {
         const student = await StudentService.findById(Number(req.params.sid));
         if(!student){
@@ -44,7 +46,7 @@ router.get('/:sid', validateBySid, async (req, res) => {
 });
 
 
-router.post('/', validateBody, async (req, res) => {
+router.post('/', validateToken, validateBody, async (req, res) => {
     try{
         const newStudent = await StudentService.createStudent(req.body);
         res.json(newStudent);
@@ -53,7 +55,7 @@ router.post('/', validateBody, async (req, res) => {
     }
 });
 
-router.put('/:sid', validateBySid, validateBody, async(req, res) => {
+router.put('/:sid', validateToken, validateBySid, validateBody, async(req, res) => {
     try {
         const updatedStudent = await StudentService.updateStudent(req.body, Number(req.params.sid));
         res.sendStatus(204);
@@ -68,7 +70,7 @@ router.put('/:sid', validateBySid, validateBody, async(req, res) => {
     }
 })
 
-router.delete('/:sid', validateBySid, async(req, res) => {
+router.delete('/:sid', validateToken, validateBySid, async(req, res) => {
     try {
         const student = await StudentService.deleteStudent(req.params.sid)
         if(!student){
