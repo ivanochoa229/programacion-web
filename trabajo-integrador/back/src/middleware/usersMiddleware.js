@@ -1,5 +1,5 @@
 const JwtService = require('../services/jwtService');
-
+require('dotenv').config();
 const validateBody = (req, res, next) => {
     const username = req.body.username;
     const password = req.body.password;
@@ -29,7 +29,7 @@ const validateToken = (req, res, next) => {
 
     try{
       userData = JwtService.validateToken(token); 
-      //req.session.user = userData;
+      req.session.user = userData;
 
     }catch(err){
 

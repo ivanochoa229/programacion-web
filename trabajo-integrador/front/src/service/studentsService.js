@@ -37,6 +37,11 @@ export const createStudent = async ({firstname, lastname, email, dni}) => {
               },
             body: JSON.stringify({ firstname, lastname, email, dni })
         });
+        if (response.status === 401) {
+          sessionStorage.removeItem("token");
+          window.location.href = "/login";
+          throw new Error("Token expired or invalid");
+        }
         if (!response.ok) {
             throw new Error('Response error');
           }
@@ -58,6 +63,11 @@ export const deleteStudent = async (sid) => {
           ...(token && { 'Authorization': `Bearer ${token}` })
         },
       });
+      if (response.status === 401) {
+        sessionStorage.removeItem("token");
+        window.location.href = "/login";
+        throw new Error("Token expired or invalid");
+      }
       if(!response){
         throw new Error('Response error');
       }
@@ -79,6 +89,11 @@ export const lengthStudent = async () => {
             ...(token && { 'Authorization': `Bearer ${token}` })
         },
       });
+      if (response.status === 401) {
+        sessionStorage.removeItem("token");
+        window.location.href = "/login";
+        throw new Error("Token expired or invalid");
+      }
       if(!response){
         throw new Error('Response error');
       }

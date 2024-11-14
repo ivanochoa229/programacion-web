@@ -3,6 +3,7 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var qs = require('querystring');
 require('./src/config/setupModel');
+require('dotenv').config
 
 const studentsRoutes = require('./src/routes/studentsRoutes');
 const usersRoutes = require('./src/routes/authRoutes');
