@@ -29,7 +29,7 @@ const validateToken = (req, res, next) => {
 
     try{
       userData = JwtService.validateToken(token); 
-      req.session.user = userData;
+      //req.session.user = userData;
 
     }catch(err){
 

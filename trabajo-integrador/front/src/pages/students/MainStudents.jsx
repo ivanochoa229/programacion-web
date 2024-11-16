@@ -21,6 +21,11 @@ export const MainStudents = () => {
     navigate('/add-student');
   };
 
+  const handleOnClickCloseSession = () => {
+    sessionStorage.removeItem("token");
+    navigate('/login')
+  }
+
   const handleDelete = async (sid, firstname, lastname) => {
     if (
       window.confirm(
@@ -79,7 +84,7 @@ export const MainStudents = () => {
       setRefresh(false);
     };
     getStudents();
-  }, [refresh, currentPage, valueSizePagination]);
+  }, [refresh, currentPage, valueSizePagination, valueInputSearch]);
 
   return (
     <>
@@ -89,6 +94,9 @@ export const MainStudents = () => {
           <button key='add' onClick={handleOnClick} className='add-button'>
             Agregar
           </button>,
+          <button key='log-out' onClick={handleOnClickCloseSession} className='add-button close-session-button'>
+          Cerrar Sesión
+        </button>
         ]}
       >
         <div>

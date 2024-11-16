@@ -1,4 +1,4 @@
-const { validateBody } = require('../middleware/usersMiddleware');
+const { validateBody, validateToken } = require('../middleware/usersMiddleware');
 
 express = require('express');
 UsersService = require('../services/usersService');
@@ -31,4 +31,6 @@ router.post('/register', validateBody,  async (req, res) => {
         }
       }
 });
+
+
 module.exports = router;

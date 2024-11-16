@@ -41,11 +41,12 @@ export const FormStudents = () => {
       );
     }
   };
-
   const navigate = useNavigate();
   const handleOnClick = () => {
     navigate(-1);
   };
+
+
   return (
     <>
       <PageContent

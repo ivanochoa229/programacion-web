@@ -29,6 +29,16 @@
   cursor: pointer;
 }
 
+.add-button:not(:last-child){
+  margin-right: 5px;
+}
+
+.add-button:last-child{
+  margin-right: 5px;
+}
+
+
+
 .back-button{
   box-shadow:0px 0px 0px 1px rgba(0, 0, 0, 0.75);
   border: none;

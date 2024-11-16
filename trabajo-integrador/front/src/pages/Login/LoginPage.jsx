@@ -1,75 +1,41 @@
-import { useNavigate } from "react-router-dom";
-import { useForm } from 'react-hook-form';
-import { useAuth } from "./components/AuthProvider";
-
-import "./LoginPage.css";
-import { Login } from "../../service/auth/authSerivice";
+import { useNavigate } from 'react-router-dom';
+import { useAuth } from './components/AuthProvider';
+import { AuthForm } from '../Login/components/AuthForm'; 
+import { Login } from '../../service/auth/authSerivice';
+import './LoginPage.css';
 
 export const LoginPage = () => {
   const navigate = useNavigate();
-  const { login } = useAuth(); 
-
-  const handlOnClick = () => {
-    navigate('/register'); 
-  }
+  const { login } = useAuth();
 
   const defaultValues = {
-        inputUsernameValue: '',
-        inputPasswordValue: ''
-      };
-    
-      const {
-        register,
-        handleSubmit,
-        formState: { errors }
-      } = useForm({ defaultValues });
+    inputUsernameValue: '',
+    inputPasswordValue: '',
+  };
 
-      const OnSubmit = async ({inputUsernameValue, inputPasswordValue}) => {
-        const response = await Login(inputUsernameValue, inputPasswordValue);
-        if(response){
-          login();
-          navigate('/');
-        }
-      };
-
+  const onSubmit = async ({ inputUsernameValue, inputPasswordValue }) => {
+    const response = await Login(inputUsernameValue, inputPasswordValue);
+    if (response.success) {
+      login(); 
+      navigate('/');  
+    } else {
+      window.alert('Usuario y/o contraseña incorrectos'); 
+    }
+  };
 
 
   return (
     <div className="login-content">
       <div className="card-login">
-        <form onSubmit={handleSubmit(OnSubmit)}>
-            <div className="login-fields">
-              <label>Usuario</label>
-              <div className='container-input-error'>
-              <input
-                {...register('inputUsernameValue', {
-                  required: 'El campo Usuario es requerido'
-                })}
-                id='inputUsername'
-                placeholder='Ingrese un usuario'
-              />
-              <p className='p-error'>{errors.inputUsernameValue?.message}</p>
-            </div>
-              <label>Contraseña</label>
-              <div className='container-input-error'>
-              <input
-                {...register('inputPasswordValue', {
-                  required: 'El campo contraseña es requerido'
-                })}
-                id='inputPassword'
-                placeholder='Ingrese una contraseña'
-                type='password'
-              />
-              <p className='p-error'>{errors.inputPasswordValue?.message}</p>
-            </div>
-            </div>
-            <div className="p-login">
-            <p onClick={handlOnClick}>Registrarse</p>
-          </div>
-            <div className="login-button">
-              <button type="submit">Iniciar Sesión</button>
-            </div>
-          </form>
+        <AuthForm
+        title={'Iniciar Sesión'}
+          onSubmit={onSubmit}
+          buttonText="Iniciar Sesión"
+          defaultValues={defaultValues}
+        />
+        <div className="p-login">
+          <p onClick={() => navigate('/register')}>Registrarse</p>
+        </div>
       </div>
     </div>
   );

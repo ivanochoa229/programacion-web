@@ -2,6 +2,7 @@ const API_BASE = `/api/`;
 
 export const Login = async (username, password) => {
   try {
+    
     const login = await fetch(`${API_BASE}login`, {
       method: "POST",
       headers: {
@@ -14,12 +15,21 @@ export const Login = async (username, password) => {
     }
     const data = await login.json();
     if (data.jwt) {
-        sessionStorage.setItem("token", data.jwt); 
-      } 
-      return data;
+      sessionStorage.setItem("token", data.jwt);
+    }
+
+    return {
+      success: true,
+      message: "Login exitoso",
+      data, 
+    };
+
   } catch (err) {
     console.error("Auth Error:", err);
-    throw err;
+    return {
+      success: false,
+      message: err.message || "Hubo un problema con la autenticación",
+    };
   }
 };
 
@@ -37,11 +47,18 @@ export const Register = async (username, password) => {
     }
     const data = await login.json();
     if (data.jwt) {
-        sessionStorage.setItem("token", data.jwt); 
-      } 
-    return data;
+      sessionStorage.setItem("token", data.jwt);
+    }
+    return {
+      success: true,
+      message: "Registro exitoso",
+      data, 
+    };
   } catch (err) {
     console.error("Auth Error:", err);
-    throw err;
+    return {
+      success: false,
+      message: err.message || "Hubo un problema al registrar el usuario",
+    };
   }
 };

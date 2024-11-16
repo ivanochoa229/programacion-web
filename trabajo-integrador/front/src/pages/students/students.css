@@ -69,3 +69,8 @@ input{
 .not-active-button{
   background: gray;
 }
+
+.close-session-button {
+  background: red;
+  color: white;
+}
