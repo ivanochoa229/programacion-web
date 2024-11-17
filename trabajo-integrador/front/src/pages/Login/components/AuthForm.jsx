@@ -51,11 +51,11 @@ export const AuthForm = ({
 
 AuthForm.propTypes = {
   title: PropTypes.string,
-  defaultValues: PropTypes.any,
+  defaultValues: PropTypes.object,
   onSubmit: PropTypes.func,
   buttonText: PropTypes.string,
   validationRules: PropTypes.shape({
-    username: PropTypes.array.isRequired,
-    password: PropTypes.array.isRequired,
+    username: PropTypes.object.isRequired,
+    password: PropTypes.object.isRequired,
   }).isRequired,
 };
