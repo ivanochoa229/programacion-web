@@ -14,6 +14,7 @@ export const LoginPage = () => {
   };
 
   const onSubmit = async ({ inputUsernameValue, inputPasswordValue }) => {
+    window.alert(inputUsernameValue + inputPasswordValue)
     const response = await Login(inputUsernameValue, inputPasswordValue);
     if (response.success) {
       login(); 
@@ -21,6 +22,15 @@ export const LoginPage = () => {
     } else {
       window.alert('Usuario y/o contraseña incorrectos'); 
     }
+  };
+  
+  const validationRules = {
+    username: {
+      required: 'El campo Usuario es requerido',
+    },
+    password: {
+      required: 'El campo contraseña es requerido',
+    },
   };
 
 
@@ -32,6 +42,7 @@ export const LoginPage = () => {
           onSubmit={onSubmit}
           buttonText="Iniciar Sesión"
           defaultValues={defaultValues}
+          validationRules={validationRules}
         />
         <div className="p-login">
           <p onClick={() => navigate('/register')}>Registrarse</p>

@@ -1,38 +1,45 @@
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
+import PropTypes from "prop-types";
 
-// eslint-disable-next-line react/prop-types
-export const AuthForm = ({ title, onSubmit, buttonText, defaultValues}) => {
+
+export const AuthForm = ({
+  title,
+  onSubmit,
+  buttonText,
+  defaultValues,
+  validationRules,
+}) => {
   const { register, handleSubmit, formState } = useForm({ defaultValues });
 
   return (
     <form onSubmit={handleSubmit(onSubmit)}>
-        <div>
-            <h2>{title}</h2>
-        </div>
+      <div>
+        <h2 className="title-form">{title}</h2>
+      </div>
       <div className="login-fields">
         <label>Usuario</label>
         <div className="container-input-error">
           <input
-            {...register('inputUsernameValue', {
-              required: 'El campo Usuario es requerido',
-            })}
+            {...register("inputUsernameValue", validationRules.username)}
             id="inputUsername"
             placeholder="Ingrese un usuario"
           />
-          <p className="p-error">{formState.errors.inputUsernameValue?.message}</p>
+          <p className="p-error">
+            {formState.errors.inputUsernameValue?.message}
+          </p>
         </div>
-        
+
         <label>Contraseña</label>
         <div className="container-input-error">
           <input
-            {...register('inputPasswordValue', {
-              required: 'El campo contraseña es requerido',
-            })}
+            {...register("inputPasswordValue", validationRules.password)}
             id="inputPassword"
             placeholder="Ingrese una contraseña"
             type="password"
           />
-          <p className="p-error">{formState.errors.inputPasswordValue?.message}</p>
+          <p className="p-error">
+            {formState.errors.inputPasswordValue?.message}
+          </p>
         </div>
       </div>
       <div className="login-button">
@@ -40,4 +47,15 @@ export const AuthForm = ({ title, onSubmit, buttonText, defaultValues}) => {
       </div>
     </form>
   );
+};
+
+AuthForm.propTypes = {
+  title: PropTypes.string,
+  defaultValues: PropTypes.any,
+  onSubmit: PropTypes.func,
+  buttonText: PropTypes.string,
+  validationRules: PropTypes.shape({
+    username: PropTypes.array.isRequired,
+    password: PropTypes.array.isRequired,
+  }).isRequired,
 };
