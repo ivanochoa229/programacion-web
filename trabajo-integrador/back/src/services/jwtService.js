@@ -3,6 +3,7 @@ require('dotenv').config();
 const jwtEpiration = process.env.JWT_EXPIRATION;
 const secretKey = process.env.SECRET_KEY;
 
+
 const generateToken = (user) => {
 
     username = user.username;
