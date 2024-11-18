@@ -84,7 +84,7 @@ export const MainStudents = () => {
       setRefresh(false);
     };
     getStudents();
-  }, [refresh, currentPage, valueSizePagination, valueInputSearch]);
+  }, [refresh, currentPage, valueSizePagination]);
 
   return (
     <>

@@ -35,17 +35,17 @@ export const Login = async (username, password) => {
 
 export const Register = async (username, password) => {
   try {
-    const login = await fetch(`${API_BASE}register`, {
+    const register = await fetch(`${API_BASE}register`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({ username, password }),
     });
-    if (!login.ok) {
+    if (!register.ok) {
       throw new Error("Response error");
     }
-    const data = await login.json();
+    const data = await register.json();
     if (data.jwt) {
       sessionStorage.setItem("token", data.jwt);
     }

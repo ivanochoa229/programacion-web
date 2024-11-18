@@ -12,6 +12,7 @@ export const RegisterPage = () => {
   const onSubmit = async ({ inputUsernameValue, inputPasswordValue }) => {
     const response = await Register(inputUsernameValue, inputPasswordValue);
     if (response.success) { 
+      window.alert(`El usuario ${inputUsernameValue} fue creado exitosamente. Bienvenido!` );
       navigate('/');  
     } else {
       window.alert(`El usuario ${inputUsernameValue} ya se encuentra registrado. Intente con otro por favor.`); 
