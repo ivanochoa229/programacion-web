@@ -1,7 +1,12 @@
+require('dotenv').config();
 const { Sequelize } = require("sequelize");
+const dbUsername = process.env.DATABASE_USERNAME;
+const dbPassword = process.env.DATABASE_PASSWORD;
+const dbName = process.env.DATABASE_NAME;
+
 let seqInstance = null;
 const createInstance = async () => {
-  const instance = new Sequelize('tfi', "root", "", {
+  const instance = new Sequelize(dbName, dbUsername, dbPassword, {
     host: "localhost",
     dialect: "mysql",
     pool: {

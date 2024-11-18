@@ -14,7 +14,6 @@ export const LoginPage = () => {
   };
 
   const onSubmit = async ({ inputUsernameValue, inputPasswordValue }) => {
-    window.alert(inputUsernameValue + inputPasswordValue)
     const response = await Login(inputUsernameValue, inputPasswordValue);
     if (response.success) {
       login(); 
