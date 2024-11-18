@@ -1,7 +1,8 @@
+require('dotenv').config();
 const UsersRepository = require('../repository/usersRepository');
 const bcrypt = require('bcrypt');
 const JwtService = require('./jwtService');
-//const saltRounds = parseInt(process.env.SALT_ROUNDS, 10);
+const saltRounds = parseInt(process.env.SALT_ROUNDS);
 
 const createUser = async(user) => {
     try {
@@ -14,7 +15,7 @@ const createUser = async(user) => {
             throw error;
           }
 
-        const hashedPassword = await bcrypt.hash(user.password, 10);
+        const hashedPassword = await bcrypt.hash(user.password, saltRounds);
         user.password = hashedPassword;
         user.createdAt = new Date(); 
         const newUser = await UsersRepository.createUser(user);

@@ -1,6 +1,7 @@
 const jwt = require('jsonwebtoken');
-const jwtEpiration = parseInt(process.env.JWT_EXPIRATION, '30m');
-//const secretKey = parseInt(process.env.SECRET_KEY, 'asdasdfsdfdszgdfhfjgfhjhg[][SDasd');
+require('dotenv').config();
+const jwtEpiration = process.env.JWT_EXPIRATION;
+const secretKey = process.env.SECRET_KEY;
 
 const generateToken = (user) => {
 
@@ -8,15 +9,14 @@ const generateToken = (user) => {
     userId = user.id;
     const token = jwt.sign(
         {userId, username},
-        "secretKey",
-        jwtEpiration);
-
+        secretKey,
+        {expiresIn: jwtEpiration});
         return token;
 };
 
 const validateToken = (token) => {
 
-    return jwt.verify(token,"secretKey");
+    return jwt.verify(token,secretKey);
 };
 
     module.exports = {
